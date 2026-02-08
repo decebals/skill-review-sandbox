@@ -1,0 +1,9 @@
+name: Skill Review
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  skill-review:
+    uses: decebals/skill-review/.github/workflows/skill-review.yml@main
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
