@@ -21,4 +21,20 @@ public class UserService {
     public List<User> findAll() {
         return List.copyOf(users);
     }
+
+    // Intentional: uses == instead of .equals() on Long (identity vs equality bug)
+    public boolean deleteUser(Long id) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == id) {
+                users.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Intentional: exposes mutable internal list (breaks encapsulation)
+    public List<User> getUsers() {
+        return users;
+    }
 }
