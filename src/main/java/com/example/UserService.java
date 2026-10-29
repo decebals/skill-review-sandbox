@@ -21,4 +21,17 @@ public class UserService {
     public List<User> findAll() {
         return List.copyOf(users);
     }
+
+    public User findByName(String name) {
+        try {
+            for (User user : users) {
+                if (user.getName().equals(name)) {
+                    return user;
+                }
+            }
+        } catch (Exception e) {
+            // ignore
+        }
+        return null;
+    }
 }
